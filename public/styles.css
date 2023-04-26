@@ -1,0 +1,79 @@
+body{  
+    background-color: #f3f3f3;
+    text-align: center;
+    margin: 0;
+    padding:0;
+}
+
+a{
+    text-decoration: none;
+    color:#222;
+}
+
+.header{   
+    padding-top: 2em;
+    height: 10em;
+    background-color: #FFFFFf;   
+    position: relative;
+    box-shadow: 0 5px 5px 0px rgb(65 64 66);
+    border: px solid black;
+}
+
+.nav{ 
+    display: flex;
+    height: 30%;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    padding: 0 2em;
+}
+
+.navbtn{
+    margin: 0.4em 1.3em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: #009aae;
+}
+
+
+/* cuerpo */
+
+.encabezado{
+    padding: 0.5em;
+    width: 90%;
+    height: 2.2em;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #222;
+    font-family: "Poppins", sans-serif;    
+}
+
+.main{
+    padding: 1em;
+    width: 90%;
+    height: auto;
+}    
+
+.main, .encabezado{
+    margin: 1.5em auto;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    transition: 0.5s;
+    box-shadow: 2.5px 5px 9px #c9c9c9;
+}
+
+.main:hover, .encabezado:hover{
+    box-shadow: 5px 10px 18px #c9c9c9;
+    transition: 0.5s;
+}
+
+
+.footer{
+    height: 100px;
+    width: 100%;
+    /* position: fixed;     */
+    background-color: #eaeaea;
+    bottom: 0 ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+}

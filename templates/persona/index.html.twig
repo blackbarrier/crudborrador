@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nacimientos{% endblock %}
+
+{% block encabezado %}
+    Nacimientos
+{% endblock %}
+
+{% block main %}
+    
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Dni</th>
+                <th>Sexo</th>
+                <th>Hosp. de Nac.</th>
+                <th>Fecha de Nac.</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for persona in personas %}
+            <tr>
+                <td>{{ persona.id }}</td>
+                <td>{{ persona.Nombre }}</td>
+                <td>{{ persona.dni }}</td>
+                <td>{{ persona.sexo }}</td>
+                <td>{{ persona.hospitalNac }}</td>
+                <td>{{ persona.fNac |date('d-m-Y')}}</td>
+                <td>
+                    <a href="{{ path('app_persona_show', {'id': persona.id}) }}">Ver</a>
+                    <a href="{{ path('app_persona_edit', {'id': persona.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No se encontrarono datos</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
