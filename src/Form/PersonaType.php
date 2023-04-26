@@ -6,6 +6,7 @@ use App\Entity\Persona;
 use App\Entity\Hospital;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,9 +28,9 @@ class PersonaType extends AbstractType
                 'expanded' => true,
                 "multiple"=>false
             ])
-            ->add('fNac', DateType::class, [
-                'format' => 'dd-MM-yyyy',
-                'years' => range(1910, 2030)                
+            ->add('fNac', DateType::class,[
+                'data' => new \DateTime(),
+                'widget'=> 'single_text'        
             ])
             
             ->add('hospitalNac', EntityType::class, [

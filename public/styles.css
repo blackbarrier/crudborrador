@@ -8,6 +8,14 @@ body{
 a{
     text-decoration: none;
     color:#222;
+    margin: 0.3em;
+}
+form{
+    margin: 0.3em;
+}
+#persona_sexo{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .header{   
@@ -72,8 +80,33 @@ a{
 .footer{
     height: 100px;
     width: 100%;
-    /* position: fixed;     */
     background-color: #eaeaea;
-    bottom: 0 ;
+    bottom: 0;
+    margin:0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
 }
+
+
+/* show */
+
+.div-show{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* .div-1{
+    display: flex;
+    border: 1px solid black;
+
+}
+
+.div-2{
+    display: flex;
+    border: 1px solid black;
+
+
+} */

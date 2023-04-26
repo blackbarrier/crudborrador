@@ -1,4 +1,4 @@
-
+    {{ form_start(form) }}
     <div class="form-floating mb-3">
         {{ form_widget(form.Nombre, {'attr': {'class': 'form-control', 'id': "floatingInput"}}) }}
         {{ form_label(form.Nombre, 'Nombre:', {'label_attr': {'for': "floatingInput"}}) }}     
@@ -9,14 +9,14 @@
         {{ form_label(form.dni, 'Dni:', {'label_attr': {'for': "floatingInput"}}) }}     
     </div>
 
-    <div class="form-floating mb-3">
-        {{ form_widget(form.sexo) }}
-        {{ form_label(form.sexo) }}     
+    <div class="form-check" style="justify-content: space-between;">
+        
+            {{ form_widget(form.sexo)}}
     </div> 
 
     <div class="form-floating mb-3">
         {{ form_widget(form.fNac, {'attr': {'class': 'form-control', 'id': "floatingInput"}}) }}
-        {{ form_label(form.fNac, 'Fecha de nacimiento:', {'label_attr': {'for': "floatingInput"}}) }}     
+        {# {{ form_label(form.fNac, 'Fecha de nacimiento:', {'label_attr': {'for': "floatingInput"}}) }}      #}
     </div>
 
     <div class="form-floating mb-3">
@@ -24,7 +24,7 @@
         {{ form_label(form.hospitalNac, 'Hospital:', {'label_attr': {'for': "floatingInput"}}) }}     
     </div>
 
-
        
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-secondary">{{ button_label|default('Guardar') }}</button>
 
+    {{ form_end(form) }}

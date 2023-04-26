@@ -41,6 +41,7 @@ class PersonaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $personaRepository->add($persona, true);
 
             return $this->redirectToRoute('app_persona_index', [], Response::HTTP_SEE_OTHER);
