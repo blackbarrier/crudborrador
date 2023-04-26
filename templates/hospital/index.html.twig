@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hospitales{% endblock %}
+
+{% block encabezado %}
+    Hospitales
+{% endblock %}
+
+{% block main %}
+
+
+    
+    <table class="table table-striped table-hover" id="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>codigoHosp</th>
+                <th>direccion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hospital in hospitales %}
+            <tr>
+                <td>{{ hospital.id }}</td>
+                <td>{{ hospital.Nombre }}</td>
+                <td>{{ hospital.codigoHosp }}</td>
+                <td>{{ hospital.direccion }}</td>
+                <td>
+                    
+                    {# <a title="Visualizar" href="{{ path('app_hospital_show', {'id': hospital.id}) }}"></a>   #}
+                        <i class="fa-solid fa-eye"></i>                   
+                    {# <a title="Modificar" href="{{ path('app_hospital_edit', {'id': hospital.id}) }}"></a> #}
+                        <i class="fa-regular fa-pen-to-square"></i>
+                </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No se encontrarono datos</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>           
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
