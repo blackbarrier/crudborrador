@@ -18,34 +18,9 @@
     <body>
         
         <div class="header">
-           
-            <img src="{{asset('prov.png')}}" alt="Buenos Aires Provincia" id="logoprov">
-
+            <img src="{{asset('prov.png')}}" alt="Buenos Aires Provincia">
         
-
-            <nav class="nav">
-        
-                    <div>
-                        <a class="navbtn" href="{{ path('app_login') }}">login</a>
-                        <a class="navbtn" href="{{ path('app_persona_new') }}">Agregar nacimiento</a>
-                        <a class="navbtn" href="{{ path('app_persona_index') }}">Listado</a>
-                        <a class="navbtn" href="{{ path('app_hospital_index') }}">Hospitales</a>
-                    </div>                   
-                    <div>
-                        {% if app.user %}                      
-                        <span class="navbtn">Usuario: {{ app.user.userIdentifier }}</span>
-                        <a class="navbtn" href="{{ path('app_logout') }}">  Logout<i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></a>
-                        {% endif %}
-                    </div>
-            
-            </nav>
-        </div>
-
-                <div class="encabezado" style="width: 80%">            
-                    {% block encabezado %}
-                        
-                    {% endblock %}
-                </div>
+        </div>               
 
                 <div class="main" style="width: 80%">
                     {% block main %}
@@ -53,15 +28,10 @@
                     {% endblock %}        
                 </div>
 
-
-
         <div class="footer">
             <p> <a href="https://www.gba.gob.ar/gobierno">Ministerio de Gobierno - Provincia de Buenos Aires</a></p>
-            <p>Copyright © 2023 | Dirección de Informática</p>
-        </div>   
-
-
-
+        <p>Copyright © 2023 | Dirección de Informática</p>
+        </div>    
         
         <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
