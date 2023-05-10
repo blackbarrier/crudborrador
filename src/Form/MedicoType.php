@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Persona;
+use App\Entity\Medico;
 use App\Entity\Hospital;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class PersonaType extends AbstractType
+class MedicoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -33,18 +33,14 @@ class PersonaType extends AbstractType
                 'widget'=> 'single_text'        
             ])
             
-            ->add('hospitalNac', EntityType::class, [
-                
-                'class' => Hospital::class,
-                'choice_label' => 'nombre',
-            ])
+           
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Persona::class,
+            'data_class' => Medico::class,
         ]);
     }
 }

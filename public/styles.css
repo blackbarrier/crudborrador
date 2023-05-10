@@ -13,7 +13,7 @@ a{
 form{
     margin: 0.3em;
 }
-#persona_sexo{
+#medico_sexo{
     display: flex;
     justify-content: space-evenly;
 }
@@ -49,8 +49,8 @@ form{
 /* cuerpo */
 
 .encabezado{
-    padding: 0.5em;
-    width: 90%;
+    padding: 0.4em 2em;
+    width: 80%;
     height: 2.2em;
     text-align: left;
     font-weight: bold;
@@ -61,7 +61,7 @@ form{
 
 .main{
     padding: 1em;
-    width: 90%;
+    width: 80%;
     height: auto;
 }    
 

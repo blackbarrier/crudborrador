@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Hospital;
+use App\Entity\Obstetra;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Hospital>
+ * @extends ServiceEntityRepository<Obstetra>
  *
- * @method Hospital|null find($id, $lockMode = null, $lockVersion = null)
- * @method Hospital|null findOneBy(array $criteria, array $orderBy = null)
- * @method Hospital[]    findAll()
- * @method Hospital[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Obstetra|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Obstetra|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Obstetra[]    findAll()
+ * @method Obstetra[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class HospitalRepository extends ServiceEntityRepository
+class ObstetraRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Hospital::class);
+        parent::__construct($registry, Obstetra::class);
     }
 
-    public function add(Hospital $entity, bool $flush = false): void
+    public function add(Obstetra $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class HospitalRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Hospital $entity, bool $flush = false): void
+    public function remove(Obstetra $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class HospitalRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Hospital[] Returns an array of Hospital objects
+//     * @return Obstetra[] Returns an array of Obstetra objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class HospitalRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Hospital
+//    public function findOneBySomeField($value): ?Obstetra
 //    {
 //        return $this->createQueryBuilder('h')
 //            ->andWhere('h.exampleField = :val')

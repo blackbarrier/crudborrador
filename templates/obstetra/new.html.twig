@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alta Obstetra{% endblock %}
+
+{% block encabezado %}
+    Alta obstetras
+{% endblock %}
+
+{% block main %}
+    <div style="max-width: 60%; margin:auto; box-sizing: border-box;">
+    {{ include('obstetra/_form.html.twig') }}
+    </div>
+   
+{% endblock %}

@@ -14,19 +14,19 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ persona.id }}</td>
+                <td>{{ medico.id }}</td>
             </tr>
             <tr>
                 <th>Nombre</th>
-                <td>{{ persona.Nombre }}</td>
+                <td>{{ medico.Nombre }}</td>
             </tr>
             <tr>
                 <th>Dni</th>
-                <td>{{ persona.dni }}</td>
+                <td>{{ medico.dni }}</td>
             </tr>
             <tr>
                 <th>Sexo</th>
-                <td>{{ persona.sexo }}</td>
+                <td>{{ medico.sexo }}</td>
             </tr>
         </tbody>
     </table>
@@ -34,9 +34,9 @@
    
     
 
-    <a class="btn btn-secondary" href="{{ path('app_persona_edit', {'id': persona.id}) }}">Editar</a>
+    <a class="btn btn-secondary" href="{{ path('app_medico_edit', {'id': medico.id}) }}">Editar</a>
     
-    {{ include('persona/_delete_form.html.twig') }}
+    {{ include('medico/_delete_form.html.twig') }}
 
     
 {% endblock %}

@@ -17,15 +17,10 @@
 
     <div class="form-floating mb-3">
         {{ form_widget(form.fNac, {'attr': {'class': 'form-control', 'id': "floatingInput"}}) }}
-        {# {{ form_label(form.fNac, 'Fecha de nacimiento:', {'label_attr': {'for': "floatingInput"}}) }} #}
+        {# {{ form_label(form.fNac, 'Fecha de Medico:', {'label_attr': {'for': "floatingInput"}}) }} #}
     </div>
 
-    <div class="form-floating mb-3">
-        {{ form_widget(form.hospitalNac, {'attr': {'class': 'form-control', 'id': "floatingInput"}}) }}
-        {{ form_label(form.hospitalNac, 'Hospital:', {'label_attr': {'for': "floatingInput"}}) }}     
-    </div>
-
-       
-    <button class="btn btn-secondary">{{ button_label|default('Guardar') }}</button>
+          
+    <button class="btn btn-primary">{{ button_label|default('Guardar') }}</button>
 
     {{ form_end(form) }}

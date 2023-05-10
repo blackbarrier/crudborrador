@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\HospitalRepository;
+use App\Repository\ObstetraRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=HospitalRepository::class)
+ * @ORM\Entity(repositoryClass=ObstetraRepository::class)
  */
-class Hospital
+class Obstetra
 {
     /**
      * @ORM\Id
@@ -34,15 +34,6 @@ class Hospital
      */
     private $direccion;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Persona::class, mappedBy="hospitalNac", orphanRemoval=true)
-     */
-    private $personas;
-
-    public function __construct()
-    {
-        $this->personas = new ArrayCollection();
-    }
 
     public function __toString()
     {
@@ -90,33 +81,4 @@ class Hospital
         return $this;
     }
 
-    /**
-     * @return Collection<int, Persona>
-     */
-    public function getPersonas(): Collection
-    {
-        return $this->personas;
-    }
-
-    public function addPersona(Persona $persona): self
-    {
-        if (!$this->personas->contains($persona)) {
-            $this->personas[] = $persona;
-            $persona->setHospitalNac($this);
-        }
-
-        return $this;
-    }
-
-    public function removePersona(Persona $persona): self
-    {
-        if ($this->personas->removeElement($persona)) {
-            // set the owning side to null (unless already changed)
-            if ($persona->getHospitalNac() === $this) {
-                $persona->setHospitalNac(null);
-            }
-        }
-
-        return $this;
-    }
 }

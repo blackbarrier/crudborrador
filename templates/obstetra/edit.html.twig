@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Obstetra{% endblock %}
+
+{% block encabezado %}
+    Editar Obstetra
+{% endblock %}
+
+
+{% block main %}
+
+    <div style="max-width: 60%; margin:auto">
+    {{ include('obstetra/_form.html.twig', {'button_label': 'Modificar'}) }}
+    </div>
+    
+
+    {{ include('obstetra/_delete_form.html.twig') }}
+{% endblock %}

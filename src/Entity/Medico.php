@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PersonaRepository;
+use App\Repository\MedicoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PersonaRepository::class)
+ * @ORM\Entity(repositoryClass=MedicoRepository::class)
  */
-class Persona
+class Medico
 {
     /**
      * @ORM\Id
@@ -37,14 +37,7 @@ class Persona
      */
     private $fNac;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Hospital::class, inversedBy="personas")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $hospitalNac;
-
-  
-    
+   
 
     public function getId(): ?int
     {
@@ -98,17 +91,5 @@ class Persona
 
         return $this;
     }
-
-    public function getHospitalNac(): ?Hospital
-    {
-        return $this->hospitalNac;
-    }
-
-    public function setHospitalNac(?Hospital $hospitalNac): self
-    {
-        $this->hospitalNac = $hospitalNac;
-
-        return $this;
-    }
-
+ 
 }

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Obstetra index{% endblock %}
+
+{% block encabezado %}
+    Obstetras
+{% endblock %}
+
+{% block main %}
+   
+    <table class="table table-striped table-hover" id="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>CodigoHosp</th>
+                <th>Direccion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for obstetra in obstetras %}
+            <tr>
+                <td>{{ obstetra.id }}</td>
+                <td>{{ obstetra.Nombre }}</td>
+                <td>{{ obstetra.codigoHosp }}</td>
+                <td>{{ obstetra.direccion }}</td>
+                <td>
+                    <a title="Visualizar" href="{{ path('app_obstetra_show', {'id': obstetra.id}) }}"> <i class="fa-solid fa-eye"></i></a>                    
+                    <a title="Modificar" href="{{ path('app_obstetra_edit', {'id': obstetra.id}) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No se encontraron datos</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
