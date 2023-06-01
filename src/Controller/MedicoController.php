@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Medico;
+use App\Entity\User;
 use App\Form\MedicoType;
 use App\Repository\MedicoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 
@@ -24,6 +26,8 @@ class MedicoController extends AbstractController
      */
     public function index(MedicoRepository $medicoRepository): Response
     {
+        // dd($this->getUser());
+
         return $this->render('medico/index.html.twig', [
             'medicos' => $medicoRepository->findAll(),
         ]);
