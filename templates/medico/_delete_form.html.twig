@@ -1,6 +1,0 @@
-
-
-<form method="post" action="{{ path('app_medico_delete', {'id': medico.id}) }}" onsubmit="return confirm('¿Esta seguro que desea eliminar?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ medico.id) }}">
-    <button class="btn btn-danger">Eliminar <i class="fa-regular fa-trash-can"></i></button>
-</form>

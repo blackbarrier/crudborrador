@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medicos y Obstetras{% endblock %}
+
+{% block encabezado %}
+    Medicos y Obstetras
+{% endblock %}
+
+{% block main %}
+    
+    <table class="table table-striped table-hover" id="table">
+        <thead>
+            <tr>
+                <th>Matricula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Tipo de matricula</th>
+                <th>Distrito</th>                
+                <th>Fallecido</th>                
+                <th>Ver/Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for profesional in profesionales %}
+            <tr>
+                <td>{{ profesional.matricula }}</td>
+                <td>{{ profesional.persona.nombre }}</td>
+                <td>{{ profesional.persona.apellido }}</td>
+                <td>{{ profesional.tipoMatricula.tipo }}</td>
+                <td>{{ profesional.distrito.nombre }}</td>
+                <td>{{ profesional.fallecido }}</td>
+                <td>
+                    <a title="Visualizar" href="{{ path('app_profesionales_show', {'id': profesional.id}) }} "> <i class="fa-solid fa-eye"></i></a>                
+                    <a title="Modificar" href="{{ path('app_profesionales_edit', {'id': profesional.id}) }}"><i class="fa-regular fa-pen-to-square"></i></a>                  
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No se encontraron datos</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

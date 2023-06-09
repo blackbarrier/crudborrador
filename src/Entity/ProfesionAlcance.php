@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ProfesionAlcance
  *
- * @ORM\Table(name="profesion_alcance", indexes={@ORM\Index(name="FK_profesion_alcance_alcance", columns={"alcance_id"}), @ORM\Index(name="FK_profesion_alcance_profesion", columns={"profesion_id"})})
+ * @ORM\Table(name="profesion_alcance", indexes={@ORM\Index(name="FK_profesion_alcance_alcance", columns={"alcance_id"}), @ORM\Index(name="FK_profesion_alcance_profesion", columns={"tipo_matricula_id"})})
  * @ORM\Entity
  */
 class ProfesionAlcance
@@ -22,14 +22,14 @@ class ProfesionAlcance
     private $id;
 
     /**
-     * @var \Profesion
+     * @var \TipoMatricula
      *
-     * @ORM\ManyToOne(targetEntity="Profesion")
+     * @ORM\ManyToOne(targetEntity="TipoMatricula")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="profesion_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tipo_matricula_id", referencedColumnName="id")
      * })
      */
-    private $profesion;
+    private $tipoMatricula;
 
     /**
      * @var \Alcance
@@ -46,14 +46,14 @@ class ProfesionAlcance
         return $this->id;
     }
 
-    public function getProfesion(): ?Profesion
+    public function getTipoMatriculan(): ?TipoMatricula
     {
-        return $this->profesion;
+        return $this->tipoMatricula;
     }
 
-    public function setProfesion(?Profesion $profesion): self
+    public function setTipoMatricula(?TipoMatricula $tipoMatricula): self
     {
-        $this->profesion = $profesion;
+        $this->tipoMatricula = $tipoMatricula;
 
         return $this;
     }

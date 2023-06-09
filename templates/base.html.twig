@@ -27,20 +27,20 @@
             <nav class="nav">
         
                     <div>                  
-                        <a class="navbtn" href="{{ path('app_medico_new') }}">Agregar Profesional</a>
-                        <a class="navbtn" href="{{ path('app_medico_index') }}">Consulta Profesional</a>
+                        <a class="navbtn form-text" href="{{ path('app_profesionales_index') }}">Consulta Profesional</a>
+                        <a class="navbtn form-text" href="{{ path('app_profesionales_new') }}">Agregar Profesional</a>
                     </div>                   
                     <div>
-                        {% if app.user %}                      
-                        <span class="navbtn">Usuario: {{ app.user.userIdentifier }}</span>
+                        {# {% if app.usuario %}                      
+                        <span class="navbtn">Usuario: {{ app.usuario.usuarioIdentifier }}</span>
                         <a class="navbtn" href="{{ path('app_logout') }}">Logout<i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></a>
-                        {% endif %}
+                        {% endif %} #}
                     </div>
             
             </nav>
         </div>
 
-                <div class="encabezado">            
+                <div class="encabezado form-text">            
                     {% block encabezado %}
                         
                     {% endblock %}

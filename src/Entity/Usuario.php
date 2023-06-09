@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Usuario
  *
- * @ORM\Table(name="usuario", indexes={@ORM\Index(name="IDX_2265B05D4BAB96C", columns={"rol_id"})})
+ * @ORM\Table(name="usuario", indexes={@ORM\Index(name="FK_usuario_rol", columns={"rol_id"})})
  * @ORM\Entity
  */
 class Usuario
@@ -86,6 +86,11 @@ class Usuario
      * })
      */
     private $rol;
+
+    public function __toString(): string
+    {
+        return $this->nombre;
+    }
 
     public function getId(): ?int
     {

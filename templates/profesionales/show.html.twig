@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consulta{% endblock %}
+
+{% block encabezado %}
+    Consulta
+{% endblock %}
+
+{% block main %}
+
+
+{# <div style="max-width: 60%; margin:auto">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ persona.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ persona.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Dni</th>
+                <td>{{ persona.numeroDocumento }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    #}
+    
+
+    {# <a class="btn btn-secondary" href="#">Editar</a>
+    {{ path('app_medico_edit', {'id': medico.id}) }}
+    
+    {{ include('profesionales/_delete_form.html.twig') }} #}
+
+
+
+
+
+
+    {{ include('profesionales/_form.html.twig', {'button_label': 'Modificar'}) }}
+    <a href="{{path('app_profesionales_index')}}"><button class="btn btn-primary">{{ button_label|default('Volver') }}</button></a>
+
+
+    <script>
+        let btn= document.getElementById("btn_form"); 
+        btn.style.display ="none";
+        var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+            inputs[i].readOnly = true;
+            inputs[i].disabled = true;
+
+            }
+
+        var selects = document.getElementsByTagName("select");
+        for (var i = 0; i < selects.length; i++) {
+            selects[i].readOnly = true;
+            selects[i].disabled = true;
+
+        }
+    </script>
+
+    
+{% endblock %}

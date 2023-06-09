@@ -4819,7 +4819,7 @@
                 "symfony/expression-language": "For using the expression voter",
                 "symfony/http-foundation": "",
                 "symfony/ldap": "For using LDAP integration",
-                "symfony/validator": "For using the user password constraint"
+                "symfony/validator": "For using the usuario password constraint"
             },
             "type": "library",
             "autoload": {
@@ -5042,7 +5042,7 @@
                 "symfony/translation": "^4.4|^5.0|^6.0"
             },
             "suggest": {
-                "symfony/routing": "For using the HttpUtils class to create sub-requests, redirect the user, and match URLs",
+                "symfony/routing": "For using the HttpUtils class to create sub-requests, redirect the usuario, and match URLs",
                 "symfony/security-csrf": "For using tokens to protect authentication/logout attempts"
             },
             "type": "library",

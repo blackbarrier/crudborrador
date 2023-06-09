@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar medico{% endblock %}
+
+{% block encabezado %}
+    Editar medico
+{% endblock %}
+
+{% block main %}
+
+    {# <div style="max-width: 60%; margin:auto"> #}
+        {{ include('profesionales/_form.html.twig', {'button_label': 'Modificar'}) }}
+    {# </div> #}
+    
+    {{ include('profesionales/_delete_form.html.twig') }}
+{% endblock %}

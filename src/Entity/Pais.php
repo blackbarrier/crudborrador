@@ -35,6 +35,11 @@ class Pais
      */
     private $nacionalidad;
 
+    public function __toString(): string
+    {
+        return $this->nombre; // O cualquier propiedad que desees mostrar como representación de cadena
+    }
+
     public function getId(): ?int
     {
         return $this->id;

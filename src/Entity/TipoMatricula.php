@@ -35,6 +35,11 @@ class TipoMatricula
      */
     private $observacion;
 
+    public function __toString(): string
+    {
+        return $this->tipo; // O cualquier propiedad que desees mostrar como representación de cadena
+    }
+
     public function getId(): ?int
     {
         return $this->id;

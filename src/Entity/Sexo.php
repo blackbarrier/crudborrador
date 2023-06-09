@@ -35,6 +35,11 @@ class Sexo
      */
     private $sigla;
 
+    public function __toString(): string
+    {
+        return $this->sigla; // O cualquier propiedad que desees mostrar como representación de cadena
+    }
+
     public function getId(): ?int
     {
         return $this->id;
