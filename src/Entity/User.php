@@ -77,14 +77,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return [$rol];
 
         
-        $roles=array();
-        array_push($roles,["ROLE_USER"]);
-        switch($this->roles){
-            case 1:
-                array_push($roles,["ROLE_ADMIN"]);
-            break;
-        }
-        return $roles;
+        // $roles=array();
+        // array_push($roles,["ROLE_USER"]);
+        // switch($this->roles){
+        //     case 1:
+        //         array_push($roles,["ROLE_ADMIN"]);
+        //     break;
+        // }
+        // return $roles;
     }
 
     public function setRoles(int $roles): self
