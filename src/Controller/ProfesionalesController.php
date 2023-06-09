@@ -51,6 +51,7 @@ class ProfesionalesController extends AbstractController
 
             $persona = $form->get('persona')->getData();
             $profesional->setPersona($persona);
+
             $entityManager->persist($persona);
             $entityManager->persist($profesional);
             $entityManager->flush();     

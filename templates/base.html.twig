@@ -31,10 +31,10 @@
                         <a class="navbtn form-text" href="{{ path('app_profesionales_new') }}">Agregar Profesional</a>
                     </div>                   
                     <div>
-                        {# {% if app.usuario %}                      
-                        <span class="navbtn">Usuario: {{ app.usuario.usuarioIdentifier }}</span>
-                        <a class="navbtn" href="{{ path('app_logout') }}">Logout<i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></a>
-                        {% endif %} #}
+                        {% if app.user %}                      
+                        <span class="navbtn form-text">Usuario: {{ app.user.userIdentifier }}</span>
+                        <a class="navbtn form-text" href="{{ path('app_logout') }}">Logout<i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></a>
+                        {% endif %}
                     </div>
             
             </nav>

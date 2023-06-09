@@ -22,7 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $correo;
+    private $username;
 
     /**
      * @ORM\Column(type="json")
@@ -35,49 +35,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $dni;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $sexo;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nombre;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $apellido;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $fecha_alta;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $borrado;
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCorreo(): ?string
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
     {
-        return $this->correo;
+        return (string) $this->username;
     }
 
-    public function setCorreo(string $correo): self
+    public function setUsername(string $username): self
     {
-        $this->correo = $correo;
+        $this->username = $username;
 
         return $this;
     }
@@ -89,15 +62,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->correo;
-    }
-
-    /**
-     * @deprecated since Symfony 5.3, use getUserIdentifier instead
-     */
-    public function getUsername(): string
-    {
-        return (string) $this->correo;
+        return (string) $this->username;
     }
 
     /**
@@ -107,7 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles = ['ROLE_USER'];
 
         return array_unique($roles);
     }
@@ -152,77 +117,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getDni(): ?string
-    {
-        return $this->dni;
-    }
-
-    public function setDni(string $dni): self
-    {
-        $this->dni = $dni;
-
-        return $this;
-    }
-
-    public function getSexo(): ?string
-    {
-        return $this->sexo;
-    }
-
-    public function setSexo(string $sexo): self
-    {
-        $this->sexo = $sexo;
-
-        return $this;
-    }
-
-    public function getNombre(): ?string
-    {
-        return $this->nombre;
-    }
-
-    public function setNombre(string $nombre): self
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    public function getApellido(): ?string
-    {
-        return $this->apellido;
-    }
-
-    public function setApellid(string $apellido): self
-    {
-        $this->apellido = $apellido;
-
-        return $this;
-    }
-
-    public function getFechaAlta(): ?\DateTimeInterface
-    {
-        return $this->fecha_alta;
-    }
-
-    public function setFechaAlta(\DateTimeInterface $fecha_alta): self
-    {
-        $this->fecha_alta = $fecha_alta;
-
-        return $this;
-    }
-
-    public function getBorrado(): ?int
-    {
-        return $this->borrado;
-    }
-
-    public function setBorrado(int $borrado): self
-    {
-        $this->borrado = $borrado;
-
-        return $this;
     }
 }
