@@ -1,0 +1,59 @@
+security:
+    enable_authenticator_manager: true
+    # https://symfony.com/doc/current/security.html#registering-the-usuario-hashing-passwords
+    password_hashers:
+        Symfony\Component\Security\Core\Usuario\PasswordAuthenticatedUsuarioInterface: 'auto'
+    # https://symfony.com/doc/current/security.html#loading-the-usuario-the-usuario-provider
+    providers:
+        # used to reload usuario from session & other features (e.g. switch_usuario)
+        app_usuario_provider:
+            entity:
+                class: App\Entity\Usuario
+                property: correo
+        # used to reload usuario from session & other features (e.g. switch_usuario)
+        # used to reload usuario from session & other features (e.g. switch_usuario)
+        # used to reload usuario from session & other features (e.g. switch_usuario)
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: app_usuario_provider
+            custom_authenticator:
+                - App\Security\LoginAuthenticator
+            logout:
+                path: app_logout
+                invalidate_session: true
+                # where to redirect after logout
+                # target: app_any_route
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#the-firewall
+
+            # https://symfony.com/doc/current/security/immedicoting_usuario.html
+            # switch_usuario: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/profesionales/, roles: [ROLE_USER] }        
+        
+
+    
+    role_hierarchy:
+       
+        
+
+when@test:
+    security:
+        password_hashers:
+            # By default, password hashers are resource intensive and take time. This is
+            # important to generate secure password hashes. In tests however, secure hashes
+            # are not important, waste resources and increase test times. The following
+            # reduces the work factor to the lowest possible values.
+            Symfony\Component\Security\Core\Usuario\PasswordAuthenticatedUsuarioInterface:
+                algorithm: auto
+                cost: 4 # Lowest possible value for bcrypt
+                time_cost: 3 # Lowest possible value for argon
+                memory_cost: 10 # Lowest possible value for argon
