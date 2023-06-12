@@ -6,10 +6,12 @@ use App\Entity\Persona;
 use App\Entity\Profesional;
 use Doctrine\DBAL\Types\BooleanType;
 use Doctrine\DBAL\Types\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType as TypeDateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,7 +23,7 @@ class ProfesionalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('matricula' )
+            ->add('matricula') 
             ->add('fallecido', ChoiceType::class,[
             'choices' => [
                 'SI' => 'SI',

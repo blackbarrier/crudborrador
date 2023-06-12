@@ -7,9 +7,36 @@
 {% endblock %}
 
 {% block main %}
-{# <div style="max-width: 60%; margin:auto; box-sizing: border-box;"> #}
+
 
     {{ include('profesionales/_form.html.twig') }}
+
+    <script>
+
+        let fallecido = document.getElementById("profesional_fallecido");
+        let fechaFallecido = document.getElementById("profesional_fechaFallecido");
+        let usuario = document.getElementById("profesional_usuario");
+        
+
+        fechaFallecido.readOnly = true;
+        fechaFallecido.disabled = true;
+        // usuario.value = usuario;
+        // usuario.readOnly = true;
+        // usuario.disabled = true;
+
+        fallecido.addEventListener("change", function() {
+            if (fallecido.value === "SI") {
+                fechaFallecido.readOnly = false;
+                fechaFallecido.disabled = false;
+            } else {
+                fechaFallecido.readOnly = true;
+                fechaFallecido.disabled = true;
+
+            }
+            });
+
     
-{# </div> #}
+    </script>
+    
+
 {% endblock %}
