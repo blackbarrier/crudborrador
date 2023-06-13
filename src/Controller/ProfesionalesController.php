@@ -8,6 +8,7 @@ use App\Form\PersonaType;
 use App\Form\ProfesionalType;
 use App\Repository\PersonaRepository;
 use App\Repository\ProfesionalRepository;
+use App\Repository\UsuarioRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,6 +31,12 @@ class ProfesionalesController extends AbstractController
      */
     public function index(ProfesionalRepository $profesionalRepository): Response
     {    
+        // dd($this->getUser());
+
+
+
+
+
         $profesionales =$profesionalRepository->findBy(['borrado' => "0"]);        
 
         return $this->render('profesionales/index.html.twig', [
@@ -41,8 +48,12 @@ class ProfesionalesController extends AbstractController
     /**
      * @Route("/new", name="app_profesionales_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UsuarioRepository $usuarioRepository): Response
     {
+        $userIdentifier=$this->getUser()->getUserIdentifier();
+        $usuario = $usuarioRepository->findOneBy(["correo" => $userIdentifier]);
+        $id_usuario = $usuario->getId();
+
         $profesional = new Profesional();
         $form = $this->createForm(ProfesionalType::class, $profesional);
         $form->handleRequest($request);
@@ -62,6 +73,7 @@ class ProfesionalesController extends AbstractController
         return $this->renderForm('profesionales/new.html.twig', [
 
             'form' => $form,
+            'id_usuario' => $id_usuario
         ]);
     }
 
@@ -84,8 +96,12 @@ class ProfesionalesController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_profesionales_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Profesional $profesional, EntityManagerInterface $entityManager): Response
-    {
+    public function edit(Request $request, Profesional $profesional, EntityManagerInterface $entityManager, UsuarioRepository $usuarioRepository): Response
+    {        
+        $userIdentifier=$this->getUser()->getUserIdentifier();
+        $usuario = $usuarioRepository->findOneBy(["correo" => $userIdentifier]);
+        $id_usuario = $usuario->getId();
+
         $id = $profesional->getId();
         $form = $this->createForm(ProfesionalType::class, $profesional);
         $form->handleRequest($request);
@@ -105,7 +121,8 @@ class ProfesionalesController extends AbstractController
         return $this->renderForm('profesionales/edit.html.twig', [
 
             'form' => $form,
-            'id' => $id
+            'id' => $id,
+            'id_usuario' => $id_usuario
         ]);
     }
 

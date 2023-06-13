@@ -9,11 +9,26 @@ body{
     min-height: 100vh;
 }
 
+
 a{
     text-decoration: none;
-    color:#222;
+    color:rgba(33, 37, 41, 0.75);
     margin: 0em;
 }
+
+select:active, .select select:active, .select select:focus
+{
+    border-color: #009aae;
+    box-shadow: 0 0 0 0.125em rgba(0,154,174,.25);        
+}
+
+
+.pagination-link.is-current {
+    background-color: #009aae;
+    border-color: #009aae;
+    color: #fff;
+}
+
 form{
     margin: 0.3em;
 }
@@ -23,8 +38,8 @@ form{
 }
 
 .header{    
-    padding-top: 1em;
-    height: 10em;
+    padding-top: 2em;
+    height: 12em;
     background-color: #FFFFFF;   
     position: relative;
     box-shadow: 0 5px 5px 0px rgb(65 64 66);
@@ -43,13 +58,13 @@ form{
 
 
 .navbtn{
-    margin: 0em 2em;
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    margin: 0em 2em;   
     font-size:medium ;
     font-weight: bold;
+    color:rgba(33, 37, 41, 0.75);
 }
-.navbtn:hover{
-    
+
+.navbtn:hover{    
     color: #009aae;
     transition: 0.5s;
 }

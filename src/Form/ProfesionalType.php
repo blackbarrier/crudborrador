@@ -43,15 +43,18 @@ class ProfesionalType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('fechaBaja',BirthdayType::class,[
-                'widget' => 'single_text',
+                'widget' => 'single_text'
             ])
             ->add('fechaCarga',BirthdayType::class,[
                 'widget' => 'single_text',
+                'data' => new \DateTime()
             ])
             // ->add('borrado')
             ->add('persona', PersonaType::class)
             ->add('usuario')
-            ->add('tipoMatricula')
+            ->add('tipoMatricula', null, [
+                'required' => true,
+            ])
             ->add('distrito')
         ;
     }

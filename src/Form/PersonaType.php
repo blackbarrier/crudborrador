@@ -14,15 +14,21 @@ class PersonaType extends AbstractType
     {
         $builder
             ->add('numeroDocumento')
-            ->add('tipoDocumento')
+            ->add('tipoDocumento', null, [
+                'required' => true,
+            ])
             ->add('apellido')
             ->add('nombre')
             ->add('fechaNacimiento',BirthdayType::class,[
                 'widget' => 'single_text',
             ])
             ->add('cuil')
-            ->add('sexo')
-            ->add('pais')
+            ->add('sexo', null, [
+                'required' => true,
+            ])
+            ->add('pais', null, [
+                'required' => true,
+            ])
         ;
     }
 

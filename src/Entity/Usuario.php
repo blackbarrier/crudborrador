@@ -27,7 +27,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="integer")
      */
-    private $roles;
+    private $rol_id;
 
     /**
      * @var string The hashed password
@@ -194,9 +194,11 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        $roles = $this->rol_id;
         if ($roles==1){
-            $rol=("ROLE_USER");
+            $rol=("ROLE_ADMIN");
+        }elseif($roles==2){
+            $rol=("ROLE_");
         }
         return [$rol];
 
@@ -213,7 +215,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
+        $this->rol_id = $roles;
 
         return $this;
     }
