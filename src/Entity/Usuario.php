@@ -38,7 +38,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="dni", type="string", length=255, nullable=true)
+     * @ORM\Column(name="dni", type="string", length=255, unique=true)
      */
     private $dni;
 
@@ -178,7 +178,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->correo;
+        return (string) $this->dni;
     }
 
     /**
@@ -186,7 +186,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->correo;
+        return (string) $this->dni;
     }
 
     /**

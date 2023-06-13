@@ -51,7 +51,7 @@ class ProfesionalesController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager, UsuarioRepository $usuarioRepository): Response
     {
         $userIdentifier=$this->getUser()->getUserIdentifier();
-        $usuario = $usuarioRepository->findOneBy(["correo" => $userIdentifier]);
+        $usuario = $usuarioRepository->findOneBy(["dni" => $userIdentifier]);
         $id_usuario = $usuario->getId();
 
         $profesional = new Profesional();
@@ -99,7 +99,7 @@ class ProfesionalesController extends AbstractController
     public function edit(Request $request, Profesional $profesional, EntityManagerInterface $entityManager, UsuarioRepository $usuarioRepository): Response
     {        
         $userIdentifier=$this->getUser()->getUserIdentifier();
-        $usuario = $usuarioRepository->findOneBy(["correo" => $userIdentifier]);
+        $usuario = $usuarioRepository->findOneBy(["dni" => $userIdentifier]);
         $id_usuario = $usuario->getId();
 
         $id = $profesional->getId();
