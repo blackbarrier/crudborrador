@@ -26,8 +26,8 @@ class ProfesionalType extends AbstractType
             ->add('matricula') 
             ->add('fallecido', ChoiceType::class,[
             'choices' => [
-                'SI' => 'SI',
-                'NO' => 'NO'                
+                'NO' => 'NO',               
+                'SI' => 'SI'
             ],
         ])
             ->add('fechaFallecido',BirthdayType::class,[
