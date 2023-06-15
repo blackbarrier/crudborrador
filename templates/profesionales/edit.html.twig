@@ -14,23 +14,26 @@
 
 
     <script>
-        let usuario = document.getElementById("profesional_usuario");
+        let usuario = document.getElementById("combinated_form_form_profesional_usuario");   
         let id_usuario = {{id_usuario}};
+
         for (let i = 0; i < usuario.options.length; i++) {
             if (usuario.options[i].value !== String(id_usuario)) {
                 usuario.remove(i);
                 i--; // Disminuir el índice para compensar la eliminación de la opción
             }
         }
+      
+   
 
-        let fallecido = document.getElementById("profesional_fallecido");
-        let fechaFallecido = document.getElementById("profesional_fechaFallecido");
+        let fallecido = document.getElementById("combinated_form_form_profesional_fallecido");
+        let fechaFallecido = document.getElementById("combinated_form_form_profesional_fechaFallecido");
 
-        let habilitado = document.getElementById("profesional_habilitado");
-        let fechaAlta = document.getElementById("profesional_fechaAlta");
-        let fechaBaja = document.getElementById("profesional_fechaBaja");
+        let habilitado = document.getElementById("combinated_form_form_profesional_habilitado");
+        let fechaAlta = document.getElementById("combinated_form_form_profesional_fechaAlta");
+        let fechaBaja = document.getElementById("combinated_form_form_profesional_fechaBaja");
 
-        let fechaCarga = document.getElementById("profesional_fechaCarga");       
+        let fechaCarga = document.getElementById("combinated_form_form_profesional_fechaCarga");       
 
         fechaFallecido.readOnly = true;
         fechaFallecido.disabled = true;
@@ -59,9 +62,9 @@
                 fechaAlta.disabled = true;
                 fechaBaja.readOnly = false;
                 fechaBaja.disabled = false;
-            }        
+            }
+        
             });    
-
     </script>
 
 {% endblock %}

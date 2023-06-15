@@ -50,7 +50,7 @@ class ProfesionalType extends AbstractType
                 'data' => new \DateTime()
             ])
             // ->add('borrado')
-            ->add('persona', PersonaType::class)
+            // ->add('persona', PersonaType::class)
             ->add('usuario')
             ->add('tipoMatricula', null, [
                 'required' => true,
