@@ -6,6 +6,7 @@ use App\Entity\Persona;
 use App\Entity\PersonaContacto;
 use App\Entity\PersonaDomicilio;
 use App\Entity\Profesional;
+use App\Entity\ProfesionalRegistracion;
 use App\Form\CombinatedFormType;
 use App\Form\PersonaContactoType;
 use App\Form\PersonaType;
@@ -60,7 +61,6 @@ class ProfesionalesController extends AbstractController
         $personaDomicilio = new PersonaDomicilio();
 
         $form = $this->createForm(CombinatedFormType::class);
-
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {           
@@ -81,12 +81,19 @@ class ProfesionalesController extends AbstractController
                 $entityManager->persist($personaDomicilio);
                 $entityManager->flush();
 
+                // $profesionalReg = new ProfesionalRegistracion();
+                // $profesionalReg->setProfesional();
+                // $profesionalReg->setAlcance();
+                // $profesionalReg->setFechaRegistracion();
+                // $profesionalReg->setOrigenRegistracion();
+
                 return $this->redirectToRoute('app_profesionales_index', [], Response::HTTP_SEE_OTHER);                       
         }
 
         return $this->renderForm('profesionales/new.html.twig', [
 
             'form' => $form,
+             //Este $id es el que va a pasar al Javascript para setear el campo Usuario de carga..
             'id_usuario' => $id_usuario
         ]);
     }

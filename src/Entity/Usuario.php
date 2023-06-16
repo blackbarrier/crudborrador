@@ -42,12 +42,12 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $dni;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="sexo", type="string", length=255, nullable=true)
-     */
-    private $sexo;
+    // /**
+    //  * @var string|null
+    //  *
+    //  * @ORM\Column(name="sexo", type="string", length=255, nullable=true)
+    //  */
+    // private $sexo;
 
     /**
      * @var string|null
@@ -76,6 +76,11 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(name="borrado", type="integer", nullable=false)
      */
     private $borrado;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Sexo::class)
+     */
+    private $sexo;
 
     public function __toString(): string
     {
@@ -111,17 +116,17 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getSexo(): ?string
-    {
-        return $this->sexo;
-    }
+    // public function getSexo(): ?string
+    // {
+    //     return $this->sexo;
+    // }
 
-    public function setSexo(?string $sexo): self
-    {
-        $this->sexo = $sexo;
+    // public function setSexo(?string $sexo): self
+    // {
+    //     $this->sexo = $sexo;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getNombre(): ?string
     {
@@ -253,5 +258,17 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getSexo(): ?Sexo
+    {
+        return $this->sexo;
+    }
+
+    public function setSexo(?Sexo $sexo): self
+    {
+        $this->sexo = $sexo;
+
+        return $this;
     }
 }

@@ -126,7 +126,7 @@
       {# Fila 2 #}
       <div class="row align-items-start">
 
-              {# Fila 2 Columna 2 #}
+              {# Fila 2 Columna 1 #}
               <div class="col">
                 <h2 class="form-text" style="font-size: x-large;">Datos de contacto</h2>
                 <br>
@@ -180,6 +180,32 @@
                       </tr> 
                     </table>
               </div>   
+
+              <div class="col">
+                <h2 class="form-text" style="font-size: x-large;">Archivo</h2>
+                <br>
+                <br>
+                   <table>
+                      <tr>                        
+                        <td>{{ form_widget(form.form_archivo.fechaCarga, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
+                      </tr>
+                      <tr>                        
+                        <td>{{ form_widget(form.form_archivo.path, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
+                      </tr>
+                      <tr>                        
+                        <td>{{ form_widget(form.form_archivo.nombreArchivo, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
+                      </tr>
+                      <tr>                        
+                        <td>{{ form_widget(form.form_archivo.tipoArchivo, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
+                      </tr>
+                      <tr>                        
+                        <td>{{ form_widget(form.form_archivo.borrado, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
+                      </tr>
+                      <tr>                        
+                        <td>{{ form_widget(form.form_archivo.profesionalRegistracion, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
+                      </tr>
+                    </table>
+                </div>             
 
       </div>
   

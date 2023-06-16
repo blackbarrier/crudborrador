@@ -63,12 +63,12 @@ class PersonaDomicilio
      */
     private $fechaActualizacion;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="usuario_actualiza_id", type="integer", nullable=false)
-     */
-    private $usuarioActualizaId;
+    // /**
+    //  * @var int
+    //  *
+    //  * @ORM\Column(name="usuario_actualiza_id", type="integer", nullable=false)
+    //  */
+    // private $usuarioActualizaId;
 
     /**
      * @var \Persona
@@ -89,6 +89,12 @@ class PersonaDomicilio
      * })
      */
     private $localidad;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Usuario::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $usuarioActualizaId;
 
     public function getId(): ?int
     {
@@ -167,17 +173,17 @@ class PersonaDomicilio
         return $this;
     }
 
-    public function getUsuarioActualizaId(): ?int
-    {
-        return $this->usuarioActualizaId;
-    }
+    // public function getUsuarioActualizaId(): ?int
+    // {
+    //     return $this->usuarioActualizaId;
+    // }
 
-    public function setUsuarioActualizaId(int $usuarioActualizaId): self
-    {
-        $this->usuarioActualizaId = $usuarioActualizaId;
+    // public function setUsuarioActualizaId(int $usuarioActualizaId): self
+    // {
+    //     $this->usuarioActualizaId = $usuarioActualizaId;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPersona(): ?Persona
     {
@@ -199,6 +205,18 @@ class PersonaDomicilio
     public function setLocalidad(?Localidad $localidad): self
     {
         $this->localidad = $localidad;
+
+        return $this;
+    }
+
+    public function getUsuarioActualizaId(): ?Usuario
+    {
+        return $this->usuarioActualizaId;
+    }
+
+    public function setUsuarioActualizaId(?Usuario $usuarioActualizaId): self
+    {
+        $this->usuarioActualizaId = $usuarioActualizaId;
 
         return $this;
     }
