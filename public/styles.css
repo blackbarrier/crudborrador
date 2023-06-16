@@ -16,6 +16,18 @@ body{
     margin:auto;
 }
 
+.col{
+    padding:0 1.5em;
+    margin: 0;
+}
+.separador{
+    height:30em;
+    margin: auto;
+    padding: 0;
+    width: 1px;
+    background-color: rgba(44, 44, 44, 0.171);
+    border: none;
+}
 
 a{
     text-decoration: none;
@@ -87,7 +99,7 @@ form{
 }
 
 .main{
-    padding: 1em;    
+    padding: 2em 0;    
     height: auto;
 }    
 

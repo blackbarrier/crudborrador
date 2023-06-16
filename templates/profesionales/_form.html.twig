@@ -67,6 +67,7 @@
                       </tr>
                     </table> 
               </div>
+              <div class="separador"></div>
           
     
               {# Fila 1 Columna 2 #}
@@ -117,14 +118,10 @@
                         <td>{{ form_widget(form.form_profesional.distrito, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Distrito'}}) }}</td>
                       </tr>   
                     </table>
+                    
               </div>   
-
-      </div>
-
-
-
-      {# Fila 2 #}
-      <div class="row align-items-start">
+              <div class="separador"></div>
+     
 
               {# Fila 2 Columna 1 #}
               <div class="col">
@@ -144,16 +141,7 @@
                         <td><span class="form-text">E-mail</span></td>
                         <td>{{ form_widget(form.form_contacto.mail, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'ejemplo@mail.com'}}) }}</td>            
                       </tr>
-                    </table> 
-              </div>
-          
-    
-              {# Fila 2 Columna 2 #}
-              <div class="col">
-                <h2 class="form-text" style="font-size: x-large;">Domicilio</h2>
-                <br>
-                <br> 
-                    <table>
+                
                       <tr>
                         <td><span class="form-text">Calle</span></td>
                         <td>{{ form_widget(form.form_domicilio.calle, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
@@ -181,35 +169,34 @@
                     </table>
               </div>   
 
+      </div>
+
+      <div class="row align-items-start">
+
               <div class="col">
                 <h2 class="form-text" style="font-size: x-large;">Archivo</h2>
                 <br>
-                <br>
-                   <table>
-                      <tr>                        
-                        <td>{{ form_widget(form.form_archivo.fechaCarga, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
-                      </tr>
-                      <tr>                        
-                        <td>{{ form_widget(form.form_archivo.path, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
-                      </tr>
-                      <tr>                        
-                        <td>{{ form_widget(form.form_archivo.nombreArchivo, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
-                      </tr>
-                      <tr>                        
-                        <td>{{ form_widget(form.form_archivo.tipoArchivo, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
-                      </tr>
-                      <tr>                        
-                        <td>{{ form_widget(form.form_archivo.borrado, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
-                      </tr>
-                      <tr>                        
-                        <td>{{ form_widget(form.form_archivo.profesionalRegistracion, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}</td>
-                      </tr>
-                    </table>
-                </div>             
+                <br>                     
+                  {{ form_widget(form.form_archivo.path, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Calle'}}) }}
+              </div>
 
+              <div class="col">
+              </div>
+
+              <div class="col">
+              </div>
+      
       </div>
-  
+
+      <br>
+      <br>
+              
+                
+                                        
   <button class="btn btn-primary" id="btn_form">{{ button_label|default('Guardar') }}</button>  
+                          
+
+  
 {{ form_end(form) }} 
 </div>
 {# Columna Principal #}
