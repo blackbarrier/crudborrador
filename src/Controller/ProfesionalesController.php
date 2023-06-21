@@ -7,10 +7,12 @@ use App\Entity\PersonaContacto;
 use App\Entity\PersonaDomicilio;
 use App\Entity\Profesional;
 use App\Entity\ProfesionalRegistracion;
+use App\Entity\ProfesionalRegistracionArchivo;
 use App\Form\CombinatedFormType;
 use App\Form\PersonaContactoType;
 use App\Form\PersonaType;
 use App\Form\ProfesionalType;
+use App\Repository\AlcanceRepository;
 use App\Repository\PersonaContactoRepository;
 use App\Repository\PersonaDomicilioRepository;
 use App\Repository\PersonaRepository;
@@ -23,10 +25,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
-
-
-
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/profesionales")
@@ -49,7 +50,7 @@ class ProfesionalesController extends AbstractController
     /**
      * @Route("/new", name="app_profesionales_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager, UsuarioRepository $usuarioRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UsuarioRepository $usuarioRepository, AlcanceRepository $repoAlcance): Response
     {
         $userIdentifier=$this->getUser()->getUserIdentifier();
         $usuario = $usuarioRepository->findOneBy(["dni" => $userIdentifier]);
@@ -59,8 +60,12 @@ class ProfesionalesController extends AbstractController
         $persona = new Persona();
         $personaContacto = new PersonaContacto();
         $personaDomicilio = new PersonaDomicilio();
+        $profesionalRegistracion = new ProfesionalRegistracion();
+        $archivo = new ProfesionalRegistracionArchivo();
+    
 
         $form = $this->createForm(CombinatedFormType::class);
+
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {           
@@ -69,29 +74,70 @@ class ProfesionalesController extends AbstractController
                 $personaDomicilio = $form->get('form_domicilio')->getData();
                 $persona = $form->get('form_persona')->getData();
                 $profesional = $form->get('form_profesional')->getData();
+                $profesionalRegistracion = $form->get('form_reg')->getData();
+               
                 
                 $profesional->setPersona($persona);
                 $personaContacto->setPersona($persona);
-                $personaDomicilio->setUsuarioActualizaId($id_usuario);
+                $personaDomicilio->setUsuarioActualizaId($usuario);
                 $personaDomicilio->setPersona($persona);
 
+                //Registracion
+                $profesionalRegistracion->setProfesional($profesional);
+                $profesionalRegistracion->setFechaRegistracion(new \DateTime());
+
+                        $Matricula = $profesional->getTipoMatricula();
+                        $id_tipoMatricula = $Matricula->getId();
+                        if($id_tipoMatricula ==1){
+                            $alcance_id = 2;
+                        }else{
+                            $alcance_id = 1;
+                        }
+                $alcance = $repoAlcance->findOneBy(['id' => $alcance_id]);
+                $profesionalRegistracion->setAlcance($alcance);
+                
+                
+                //Imagen
+                $archivo = $form->get('form_archivo')->getData();                
+                if ($archivo) {
+                    try {
+                        $file=$_FILES['combinated_form'];
+                        $nombre_archivo= $file["name"]["form_archivo"]["nombreArchivo"];
+                        // $tipo_archivo = $file["type"]["form_archivo"]["nombreArchivo"];
+                        // $tamano_archivo = $file["size"]["form_archivo"]["nombreArchivo"];
+
+                        $extension = explode(".", $nombre_archivo);
+                        $ext = trim($extension[1]);                        
+                        $nombre_unico = uniqid() . '_' . time();
+                        $nombre_archivo = $nombre_unico . '.' . $ext;
+                        $path = '../public/imagenes/' . $nombre_archivo . '';
+                        move_uploaded_file($file["tmp_name"]["form_archivo"]["nombreArchivo"], $path);
+
+                        $archivo->setNombreArchivo($nombre_archivo);                        
+                        $archivo->setFechaCArga(new \DateTime());
+                        $archivo->setPath($path);
+                        $archivo->setTipoArchivo($ext);
+                        $archivo->setProfesionalRegistracion($profesionalRegistracion);                  
+                       
+                    } catch (FileException $e) {
+                        dd($e);
+                    }                       
+                }                              
+                
+                
+                //Persistiendo
+                
                 $entityManager->persist($persona);
                 $entityManager->persist($profesional);
                 $entityManager->persist($personaContacto);
                 $entityManager->persist($personaDomicilio);
-                $entityManager->flush();
-
-                // $profesionalReg = new ProfesionalRegistracion();
-                // $profesionalReg->setProfesional();
-                // $profesionalReg->setAlcance();
-                // $profesionalReg->setFechaRegistracion();
-                // $profesionalReg->setOrigenRegistracion();
-
+                $entityManager->persist($profesionalRegistracion);
+                $entityManager->persist($archivo);               
+                $entityManager->flush();                
                 return $this->redirectToRoute('app_profesionales_index', [], Response::HTTP_SEE_OTHER);                       
         }
 
         return $this->renderForm('profesionales/new.html.twig', [
-
             'form' => $form,
              //Este $id es el que va a pasar al Javascript para setear el campo Usuario de carga..
             'id_usuario' => $id_usuario
@@ -103,8 +149,7 @@ class ProfesionalesController extends AbstractController
     /**
      * @Route("/{id}", name="app_profesionales_show", methods={"GET"})
      */
-    public function show($id, ProfesionalRepository $profesionalRepository, PersonaRepository $personaRepository, 
-    PersonaContactoRepository $personaContactoRepository, PersonaDomicilioRepository $personaDomicilioRepository): Response   
+    public function show ($id, ProfesionalRepository $profesionalRepository, PersonaRepository $personaRepository, PersonaContactoRepository $personaContactoRepository, PersonaDomicilioRepository $personaDomicilioRepository): Response   
     {      
         $profesional = $profesionalRepository->findOneBy(["id" => $id]);
         $persona = $profesional->getPersona();       

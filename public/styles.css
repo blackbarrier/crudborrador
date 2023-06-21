@@ -9,13 +9,6 @@ body{
     min-height: 100vh;
 }
 
-.cuadrado{
-    border: black 2px solid;
-    height: 150px;
-    width: 200px;
-    margin:auto;
-}
-
 .col{
     padding:0 1.5em;
     margin: 0;
@@ -25,6 +18,14 @@ body{
     margin: auto;
     padding: 0;
     width: 1px;
+    background-color: rgba(44, 44, 44, 0.171);
+    border: none;
+}
+.separadorHorizontal{
+    height:1px;
+    margin: auto;
+    padding: 0;
+    width: 80%;
     background-color: rgba(44, 44, 44, 0.171);
     border: none;
 }
