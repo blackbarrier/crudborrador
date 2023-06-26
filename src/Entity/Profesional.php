@@ -115,7 +115,7 @@ class Profesional
      *   @ORM\JoinColumn(name="distrito_id", referencedColumnName="id")
      * })
      */
-    private $distrito;
+    private $distrito ;
 
     public function getId(): ?int
     {

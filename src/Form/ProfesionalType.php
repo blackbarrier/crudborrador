@@ -55,7 +55,9 @@ class ProfesionalType extends AbstractType
             ->add('tipoMatricula', null, [
                 'required' => true,
             ])
-            ->add('distrito')
+            ->add('distrito', null, [
+                'required' => true,
+            ])
         ;
     }
 

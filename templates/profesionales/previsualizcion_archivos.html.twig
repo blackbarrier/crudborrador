@@ -1,21 +1,8 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Alta de profesional{% endblock %}
-
-{% block encabezado %}
-    Alta de profesional
-{% endblock %}
-
-{% block main %}
-
-    {{ include('profesionales/_form.html.twig') }}
-    {{ include('profesionales/disable_inputs.html.twig') }}  
-
-    {# Previsualizacion de Imagen #}
+ {# Previsualizacion de Imagen #}
     <script>
       let input = document.getElementById("combinated_form_form_archivo_nombreArchivo");
       let preview = document.getElementById("previsualizacion");
-      preview.style.visibility = "hidden";
+      // preview.style.visibility = "hidden";
 
       input.onchange = function(event) {
         if (input.files && input.files[0]) {
@@ -34,6 +21,4 @@
 
         }
       };    
-    </script>   
-
-{% endblock %}
+    </script> 

@@ -22,6 +22,7 @@ class CombinatedFormType extends AbstractType
         ->add('form_domicilio', PersonaDomicilioType::class)
         ->add('form_reg', ProfesionalRegistracionType::class)
         ->add('form_archivo', ProfesionalRegistracionArchivoType::class)
+        ->add('form_especialista', ProfesionalEspecialistaType::class)
         ;
     }
 

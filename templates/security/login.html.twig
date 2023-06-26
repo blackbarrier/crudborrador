@@ -3,7 +3,6 @@
 {% block title %}Ingrese sus credenciales{% endblock %}
 
 {% block main %}
-{# <div style="max-width: 30%; margin:auto"> #}
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -38,7 +37,7 @@
     </form>
 
     <script>
-        document.querySelector(".main").style.width="40%";
+        document.querySelector(".main").style.width="30%";
     </script>
-{# </div> #}
+
 {% endblock %}

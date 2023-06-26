@@ -10,61 +10,7 @@
 
     {{ include('profesionales/_form.html.twig', {'button_label': 'Modificar'}) }}    
     {{ include('profesionales/_delete_form.html.twig') }}
-
-
-
-    <script>
-        let usuario = document.getElementById("combinated_form_form_profesional_usuario");   
-        let id_usuario = {{id_usuario}};
-
-        for (let i = 0; i < usuario.options.length; i++) {
-            if (usuario.options[i].value !== String(id_usuario)) {
-                usuario.remove(i);
-                i--; // Disminuir el índice para compensar la eliminación de la opción
-            }
-        }
-      
-   
-
-        let fallecido = document.getElementById("combinated_form_form_profesional_fallecido");
-        let fechaFallecido = document.getElementById("combinated_form_form_profesional_fechaFallecido");
-
-        let habilitado = document.getElementById("combinated_form_form_profesional_habilitado");
-        let fechaAlta = document.getElementById("combinated_form_form_profesional_fechaAlta");
-        let fechaBaja = document.getElementById("combinated_form_form_profesional_fechaBaja");
-
-        let fechaCarga = document.getElementById("combinated_form_form_profesional_fechaCarga");       
-
-        fechaFallecido.readOnly = true;
-        fechaFallecido.disabled = true;
-        fechaBaja.readOnly = true;
-        fechaBaja.disabled = true;
-
-        fallecido.addEventListener("change", function() {
-            if (fallecido.value === "SI") {
-                fechaFallecido.readOnly = false;
-                fechaFallecido.disabled = false;
-            } else {
-                fechaFallecido.readOnly = true;
-                fechaFallecido.disabled = true;
-
-            }
-            });
-        
-        habilitado.addEventListener("change", function() {
-            if (habilitado.value === "SI") {
-                fechaAlta.readOnly = false;
-                fechaAlta.disabled = false;
-                fechaBaja.readOnly = true;
-                fechaBaja.disabled = true;
-            } else {
-                fechaAlta.readOnly = true;
-                fechaAlta.disabled = true;
-                fechaBaja.readOnly = false;
-                fechaBaja.disabled = false;
-            }
-        
-            });    
-    </script>
-
+    {{ include('profesionales/disable_inputs.html.twig') }}
+    {{ include('profesionales/previsualizcion_archivos.html.twig') }} 
+    
 {% endblock %}

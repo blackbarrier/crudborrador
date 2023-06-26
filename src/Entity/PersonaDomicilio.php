@@ -31,21 +31,21 @@ class PersonaDomicilio
     /**
      * @var string
      *
-     * @ORM\Column(name="numero", type="string", length=10, nullable=false)
+     * @ORM\Column(name="numero", type="string", length=10, nullable=true)
      */
     private $numero;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="piso", type="string", length=10, nullable=false)
+     * @ORM\Column(name="piso", type="string", length=10, nullable=true)
      */
     private $piso;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="departamento", type="string", length=10, nullable=false)
+     * @ORM\Column(name="departamento", type="string", length=10, nullable=true)
      */
     private $departamento;
 

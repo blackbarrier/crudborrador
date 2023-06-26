@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Alcance
 {
+
+    const NACIMIENTOS  = 1 ;
+    const DEFUNCIONES = 2 ;
     /**
      * @var int
      *

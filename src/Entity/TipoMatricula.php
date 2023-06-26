@@ -11,8 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  */
 class TipoMatricula
-{
-    /**
+{   
+    const MEDICO  = 1 ;
+    const OBSTETRA = 2;
+    /** 
      * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
