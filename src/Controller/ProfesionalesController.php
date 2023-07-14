@@ -102,15 +102,16 @@ class ProfesionalesController extends AbstractController
                 //RegistracionProfesional. Se lo carga en detalle. VER TEMA DE ALCANCE.
                 $registracion->setProfesional($profesional);
                 $registracion->setFechaRegistracion(new \DateTime());
-                        $Matricula = $profesional->getTipoMatricula();
-                        $id_tipoMatricula = $Matricula->getId();
-                        if($id_tipoMatricula ==1){
-                            $alcance_id = 2;
-                        }else{
-                            $alcance_id = 1;
-                        }
+                            $Matricula = $profesional->getTipoMatricula();
+                            $id_tipoMatricula = $Matricula->getId();
+                            if($id_tipoMatricula == TipoMatricula::MEDICO){
+                                $alcance_id = Alcance::DEFUNCIONES;
+                            }else{
+                                $alcance_id = Alcance::NACIMIENTOS;
+                            }
                 $alcance = $repoAlcance->findOneBy(['id' => $alcance_id]);
-                $registracion->setAlcance($alcance);      
+                $registracion->setAlcance($alcance);
+                $entityManager->persist($registracion);      
 
                 
                 
@@ -135,8 +136,8 @@ class ProfesionalesController extends AbstractController
                             $archivo->setPath($path);
                             $archivo->setTipoArchivo($ext);
                             $archivo->setProfesionalRegistracion($registracion);
-                            $entityManager->persist($archivo); 
-                            $entityManager->flush(); 
+                            $entityManager->persist($archivo);
+                            
                         } catch (FileException $e) {
                             throw new \Exception($e);
                         }      
@@ -147,10 +148,9 @@ class ProfesionalesController extends AbstractController
                 $entityManager->persist($persona);
                 $entityManager->persist($profesional);
                 $entityManager->persist($contacto);
-                $entityManager->persist($domicilio);
-                $entityManager->persist($registracion);                                              
+                $entityManager->persist($domicilio);                                                              
                 $entityManager->persist($especialista);                               
-                $entityManager->flush();                
+                $entityManager->flush();       
                 return $this->redirectToRoute('app_profesionales_index', [], Response::HTTP_SEE_OTHER);                       
         }
 
@@ -247,7 +247,7 @@ class ProfesionalesController extends AbstractController
             $domicilio = $form->get('form_domicilio')->getData();
             $persona = $form->get('form_persona')->getData();
             $profesional = $form->get('form_profesional')->getData();
-            $profesionalRegistracion = $form->get('form_reg')->getData();
+            $registracion = $form->get('form_reg')->getData();
             $especialista = $form->get('form_especialista')->getData();
 
 
@@ -262,8 +262,8 @@ class ProfesionalesController extends AbstractController
             $especialista->setProfesional($profesional);
 
             //RegistracionProfesional. Se lo carga en detalle. VER TEMA DE ALCANCE.
-            $profesionalRegistracion->setProfesional($profesional);
-            $profesionalRegistracion->setFechaRegistracion(new \DateTime());
+            $registracion->setProfesional($profesional);
+            $registracion->setFechaRegistracion(new \DateTime());
 
                     $Matricula = $profesional->getTipoMatricula();
                     $id_tipoMatricula = $Matricula->getId();
@@ -273,7 +273,9 @@ class ProfesionalesController extends AbstractController
                         $alcance_id = Alcance::NACIMIENTOS;
                     }
             $alcance = $repoAlcance->findOneBy(['id' => $alcance_id]);
-            $profesionalRegistracion->setAlcance($alcance);
+            $registracion->setAlcance($alcance);
+            $entityManager->persist($registracion); 
+            
             
 
             //Proceso de carga de archivo
@@ -296,11 +298,9 @@ class ProfesionalesController extends AbstractController
                             $archivo->setFechaCarga(new \DateTime());
                             $archivo->setPath($path);
                             $archivo->setTipoArchivo($ext);
-                            $archivo->setProfesionalRegistracion($profesionalRegistracion);
-                            
+                            $archivo->setProfesionalRegistracion($registracion);                            
                             $entityManager->persist($archivo);               
-                            $entityManager->flush();               
-                        
+                                                                
                         } catch (FileException $e) {
                             throw new \Exception($e);
                         }      
@@ -311,8 +311,7 @@ class ProfesionalesController extends AbstractController
             $entityManager->persist($persona);
             $entityManager->persist($profesional);            
             $entityManager->persist($contacto);
-            $entityManager->persist($domicilio);
-            $entityManager->persist($profesionalRegistracion);    
+            $entityManager->persist($domicilio);               
             $entityManager->persist($especialista);    
             $entityManager->flush();     
 

@@ -2,29 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\ProfesionalRegistracion;
+use App\Entity\Delegacion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProfesionalRegistracionType extends AbstractType
+class DelegacionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            // ->add('fechaRegistracion')
-            // ->add('borrado')
-            // ->add('profesional')
-            ->add('origenRegistracion')
-            ->add('delegacion')
-            // ->add('alcance')
+            // ->add('id')
+            ->add('descripcion')
+            // ->add('despar')
+            // ->add('partido_id')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => ProfesionalRegistracion::class,
+            'data_class' => Delegacion::class,
         ]);
     }
 }

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administracion{% endblock %}
+
+{% block encabezado %}
+    Registros
+{% endblock %}
+
+{% block main %}
+    
+    <table class="table is-striped" id="table">
+        <thead>
+            <tr>                       
+                <th>ID</th>     
+
+                <th>Matricula</th>                
+                <th>Apellido</th>                
+                <th>Nombre</th>   
+
+                <th>Fecha</th>                
+                <th>Origen</th>
+                <th>Usuario de carga</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for registro in registros %}
+            <tr>
+                <td>{{ registro.id }}</td>
+
+                <td>{{ registro.profesional.matricula }}</td>
+                <td>{{ registro.profesional.persona.apellido }}</td>
+                <td>{{ registro.profesional.persona.nombre }}</td>
+
+                <td>{{ registro.fechaRegistracion|date("Y-m-d H:i:s")}}</td>                
+                <td>{{ registro.origenRegistracion }}</td>
+
+                <td>{{ registro.profesional.usuario }}</td>
+
+                {# <td>
+                    <a title="Visualizar" href="{{ path('app_profesionales_show', {'id': profesional.id}) }} "> <i class="fa-solid fa-eye"></i></a>                
+                    <a title="Modificar" href="{{ path('app_profesionales_edit', {'id': profesional.id}) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                </td> #}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No se encontraron datos</td>                
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                {# <td></td>                 #}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <style>
+        select{
+            border-color: #009aae;
+            box-shadow: 0 0 0 0.125em rgba(0,154,174,.25);        
+        }
+    </style>
+
+
+{% endblock %}

@@ -23,11 +23,10 @@
 
   {{ form_start(form) }}
 <div class="container text-center">
-
-      {# Fila 1 #}
+      
       <div class="row align-items-start">
 
-              {# Fila 1 Columna 2 #}
+              {# Fila 1 Columna 1 #}
               <div class="col">
                 <h2 class="form-text" style="font-size: x-large;">Datos personales</h2>
                 <br>
@@ -67,25 +66,36 @@
                       </tr>
                     </table> 
               </div>
-              <div class="separador"></div>
-          
-    
+                 
+
+              <div class="separador"></div>     
+
+
               {# Fila 1 Columna 2 #}
+
               <div class="col">
                 <h2 class="form-text" style="font-size: x-large;">Datos profesionales</h2>
                 <br>
                 <br> 
-                    <table>
+                    <table>                      
+                      <tr>
+                        <td><span class="form-text">Tipo de matricula</span></td>
+                        <td>{{ form_widget(form.form_profesional.tipoMatricula, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Tipo de matricula'}}) }}</td>
+                      </tr>
                       <tr>
                         <td><span class="form-text">Matricula</span></td>
                         <td>{{ form_widget(form.form_profesional.matricula, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'N° de matricula'}}) }}</td>
-                      </tr>
+                      </tr>          
+                      <tr>
+                        <td><span class="form-text">Especialidad</span></td>
+                        <td>{{ form_widget(form.form_especialista.especialidad, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Tipo de matricula'}}) }}</td>
+                      </tr>  
                       <tr>
                         <td><span class="form-text">Fallecido</span></td>
                         <td>{{ form_widget(form.form_profesional.fallecido, {'attr': {'class': 'form-control form-control-sm'}}) }}</td>
                       </tr>
                       <tr>
-                        <td><span class="form-text">Fecha de fallecimiento</span></td>
+                        <td><span class="form-text">Fecha fallec.</span></td>
                         <td> {{ form_widget(form.form_profesional.fechaFallecido, {'attr': {'class': 'form-control form-control-sm'}}) }}</td>
                       </tr>
                       <tr>
@@ -109,26 +119,27 @@
                         <td><span class="form-text">Usuario de carga</span></td>
                         <td>{{ form_widget(form.form_profesional.usuario, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Usuario de carga'}}) }}</td>
                       </tr>
-                      <tr>
-                        <td><span class="form-text">Tipo de matricula</span></td>
-                        <td>{{ form_widget(form.form_profesional.tipoMatricula, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Tipo de matricula'}}) }}</td>
-                      </tr>          
-                      <tr>
-                        <td><span class="form-text">Especialidad</span></td>
-                        <td>{{ form_widget(form.form_especialista.especialidad, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Tipo de matricula'}}) }}</td>
-                      </tr>   
+                       
                       <tr>
                         <td><span class="form-text">Distrito</span></td>
                         <td>{{ form_widget(form.form_profesional.distrito, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Distrito'}}) }}</td>
                       </tr>   
                       <tr>
-                        <td><span class="form-text">Origen registracion</span></td>
+                        <td><span class="form-text">Origen</span></td>
                         <td>{{ form_widget(form.form_reg.origenRegistracion, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Distrito'}}) }}</td>
                       </tr>   
-                    </table>
-                    
-              </div>   
-              <div class="separador"></div>
+                      <tr>
+                        <td><span class="form-text">Delegacion</span></td>
+                        <td>{{ form_widget(form.form_reg.delegacion, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Delegacion'}}) }}</td>
+                      </tr> 
+                      
+                    </table>                    
+              </div>             
+
+
+
+              <div class="separador"></div>      
+              
      
 
               {# Fila 1 Columna 3 #}
@@ -175,13 +186,17 @@
                         <td>{{ form_widget(form.form_domicilio.localidad, {'attr': {'class': 'form-control form-control-sm', 'placeholder': 'Localidad', 'required': true}}) }}</td>
                       </tr> 
                     </table>
-              </div>   
+              </div>
 
       </div>
+
+
 
       <br>
       <div class="separadorHorizontal"></div>
       <br>
+
+
 
       <div class="row align-items-start">
 

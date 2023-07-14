@@ -9,9 +9,10 @@
                             <a class="navbtn" href="{{ path('app_profesionales_new') }}">Agregar Profesional</a>
                         </div>                   
                         <div>
+                            <a class="navbtn" href="{{ path('app_admin_registracion') }}">Admin</a>
                             {% if app.user %}                      
                             <span class="navbtn">Usuario: {{ app.user.userIdentifier }}</span>
-                            <a class="navbtn" href="{{ path('app_logout') }}">Logout<i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></a>
+                            <a class="navbtn" href="{{ path('app_logout') }}">Logout <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></a>
                             {% endif %}
                         </div>
                 

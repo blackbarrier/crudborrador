@@ -24,7 +24,7 @@ class ProfesionalRegistracion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_registracion", type="date", nullable=false)
+     * @ORM\Column(name="fecha_registracion", type="datetime", nullable=false)
      */
     private $fechaRegistracion;
 
@@ -64,6 +64,14 @@ class ProfesionalRegistracion
      * })
      */
     private $alcance;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Delegacion::class, inversedBy="profesionalRegistracions")
+     */
+    private $delegacion;
+
+
+
 
     public function getId(): ?int
     {
@@ -130,5 +138,16 @@ class ProfesionalRegistracion
         return $this;
     }
 
+    public function getDelegacion(): ?Delegacion
+    {
+        return $this->delegacion;
+    }
+
+    public function setDelegacion(?Delegacion $delegacion): self
+    {
+        $this->delegacion = $delegacion;
+
+        return $this;
+    }
 
 }

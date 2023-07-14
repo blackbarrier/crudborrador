@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +30,16 @@ class Partido
      */
     private $nombre;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Delegacion::class, mappedBy="partido_id")
+     */
+    private $delegaciones;
+
+    public function __construct()
+    {
+        $this->delegaciones = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -41,6 +53,36 @@ class Partido
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Delegacion>
+     */
+    public function getDelegaciones(): Collection
+    {
+        return $this->delegaciones;
+    }
+
+    public function addDelegacione(Delegacion $delegacione): self
+    {
+        if (!$this->delegaciones->contains($delegacione)) {
+            $this->delegaciones[] = $delegacione;
+            $delegacione->setPartidoId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDelegacione(Delegacion $delegacione): self
+    {
+        if ($this->delegaciones->removeElement($delegacione)) {
+            // set the owning side to null (unless already changed)
+            if ($delegacione->getPartidoId() === $this) {
+                $delegacione->setPartidoId(null);
+            }
+        }
 
         return $this;
     }
