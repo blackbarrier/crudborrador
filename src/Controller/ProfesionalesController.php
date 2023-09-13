@@ -64,7 +64,7 @@ class ProfesionalesController extends AbstractController
         $usuario = $usuarioRepository->findOneBy(["dni" => $userIdentifier]);
         $id_usuario = $usuario->getId();
 
-        //Creacion de instancias de todas las entidades a instanciar
+        //Creacion de instancias de todas las entidades a crear
         $profesional = new Profesional();
         $persona = new Persona();
         $contacto = new PersonaContacto();

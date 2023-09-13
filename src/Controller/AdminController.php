@@ -14,12 +14,7 @@ class AdminController extends AbstractController
      */
     public function profesional_registraciones(ProfesionalRegistracionRepository $profesionalRegRepository): Response
     {  
-        $registros = $profesionalRegRepository->findAll();
-
-        
-        return $this->render('admin/index.html.twig', [
-            'registros' => $registros,
-        ]);
+        dd("En construccion");
     }
     
 }
